@@ -1,10 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Counter from "./components/Counter";
+import CounterRef from "./components/CounterRef";
 
 function App() {
   return (
-    <div className="App" hello="hello">
-      App
+    <div>
+      <Counter title="MyCounter"/>
+      <CounterRef />
     </div>
   );
 }
