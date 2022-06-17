@@ -1,13 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import Button from './Button';
 
 const Counter = (props) => {
     const [counter, setCounter] = useState(0)
     const [title, setTitle] = useState('Counter')
-
-    useEffect(() => {
-        if(props.title) {setTitle(props.title)}
-    }, [props.title])
+    const [isAlert, setIsAlert] = React.useState(false)
     
     const handleAdd = () =>{
         setCounter(counter + 1)
@@ -15,10 +12,19 @@ const Counter = (props) => {
     const handleSub = () =>{
         setCounter(counter - 1)
     }
-    const handleAlert = () => {
-        console.log('test')
-        setTimeout(() => {setCounter(curCount => {alert(curCount)})}, 5000)
+
+    const handleAlertReactWay = () => {
+        setTimeout(() => {
+            setIsAlert(true)
+        }, 2000)
     }
+
+    useEffect(() => {
+        if (isAlert) {
+            alert(counter)
+            setIsAlert(false)
+        }
+    }, [isAlert])
     
     console.log(counter);
 
@@ -26,7 +32,7 @@ const Counter = (props) => {
         <section>
             <header>{title}: {counter}</header>
             <Button onClick={handleAdd}>+</Button><Button onClick={handleSub}>-</Button>
-            <Button onClick={handleAlert}>Alert after 5 s</Button>
+            <Button onClick={handleAlertReactWay}>Alert after 5 s</Button>
         </section>
     )
 }
