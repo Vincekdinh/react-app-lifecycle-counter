@@ -20,13 +20,13 @@ const Counter = (props) => {
     }
 
     useEffect(() => {
-        if (isAlert) {
+        if(isAlert){
             alert(counter)
-            setIsAlert(false)
+            setIsAlert(false) //flaw: redundant update
         }
-    }, [isAlert])
+    }, [isAlert, counter])
     
-    console.log(counter);
+    // console.log(counter);
 
     return (
         <section>

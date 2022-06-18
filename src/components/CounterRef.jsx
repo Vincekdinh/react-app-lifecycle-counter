@@ -1,14 +1,13 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState} from 'react';
 import Button from './Button';
 
+//declare global variable
 let counterRef;
 
 const CounterRef = (props) => {
     const [counter, setCounter] = useState(0)
     const [title, setTitle] = useState('CounterRef')
-    counterRef = useRef(counter)
-    counterRef.current = counter
-    counterRef = counterRef.current
+    counterRef = counter
     
     const handleAdd = () =>{
         setCounter(counter + 1)
@@ -21,7 +20,7 @@ const CounterRef = (props) => {
         setTimeout(() => alert(counterRef), 5000)
     }
     
-    console.log(counter);
+    // console.log(counter);
 
     return (
         <section>

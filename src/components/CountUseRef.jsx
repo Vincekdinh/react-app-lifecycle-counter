@@ -1,28 +1,13 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useRef} from 'react';
 import Button from './Button';
 
-const CountUseEff = (props) => {
+const CountUseRef = (props) => {
     const [counter, setCounter] = useState(0)
-    const [title, setTitle] = useState('CountUseEff')
+    const [title, setTitle] = useState('CountUseRef')
     const counterRef = useRef(counter)
     counterRef.current = counter
-
-    //componentDidMount
-    useEffect(() => {
-        console.log("mount:", props.title);
-        if(props.title) {setTitle(props.title)}
-    }, [])
-
-    //componentDidUpdate
-    useEffect(() => {
-        console.log("update counter:", counter)
-    }, [counter])
-
-    //componentDidUnmount
-    useEffect(() => {
-      
-    }, []);
-
+    console.log(counterRef)
+    
     const handleAdd = () =>{
         setCounter(counter + 1)
     }
@@ -33,6 +18,8 @@ const CountUseEff = (props) => {
         console.log('test')
         setTimeout(() => alert(counterRef.current), 5000)
     }
+    
+    console.log(counter);
 
     return (
         <section>
@@ -43,4 +30,4 @@ const CountUseEff = (props) => {
     )
 }
 
-export default CountUseEff;
+export default CountUseRef;
